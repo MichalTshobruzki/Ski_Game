@@ -20,6 +20,7 @@ public class Point {
         }
     }
 
+
     /**
      * Point's default constructor
      */
@@ -27,6 +28,7 @@ public class Point {
         this.setX(MIN_X);
         this.setY(MIN_Y);
     }
+
 
     /**
     * Point's copy constructor
@@ -40,8 +42,9 @@ public class Point {
         }
     }
 
-    // Set
 
+
+    // Set
     /**
      * Set Coordinate x
      * @param x
@@ -55,6 +58,7 @@ public class Point {
             return false;
         }
     }
+
 
     /**
      * Set Coordinate y
@@ -71,13 +75,13 @@ public class Point {
     }
 
     // Get
-
     /**
      * @return Coordinate x
      */
     public double getX() {
         return x;
     }
+
 
     /**
      * @return Coordinate y
@@ -86,6 +90,11 @@ public class Point {
         return y;
     }
 
+
+    /**
+     * to string
+     * @return
+     */
     public String toString() {
         return "(" + getX() + "," + getY() + ")";
     }

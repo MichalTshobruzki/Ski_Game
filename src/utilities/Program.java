@@ -1,23 +1,23 @@
 /**
  *
  * @author Michal Tshobruzki 206087041
- * Shir Bar 313253668
+ * @author Shir Bar 313253668
  *
  */
 
 package utilities;
 
 import game.Competition;
-import game.GameEngine;
 import game.arenas.AlpineSkiingArena;
 import game.arenas.ExtremeSkiingArena;
 import game.arenas.FreeSkiingArena;
-//import game.racers.OldTimer;
-//import game.racers.Showboarder;
-//import game.racers.Skier;
-//import game.racers.SnowBunny;
-//import game.racers.Snowbiker;
-//import game.racers.SunshineSkier;
+import game.sportsmen.*;
+import game.racers.OldTimer;
+import game.racers.Showboarder;
+import game.racers.Skier;
+import game.racers.SnowBunny;
+import game.racers.Snowbiker;
+import game.racers.SunshineSkier;
 
 
 public class Program {

@@ -35,11 +35,32 @@ public class Skier {
         this.setLeague(league);
     }
 
+    @Override
+    public String toString() {
+        return "Skier{" +
+                "name='" + name + '\'' +
+                ", currentLocation=" + currentLocation +
+                ", maxSpeed=" + maxSpeed +
+                ", acceleration=" + acceleration +
+                ", currentSpeed=" + currentSpeed +
+                ", qualification='" + qualification + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", league='" + league + '\'' +
+                '}';
+    }
+
 
     //get
     public double getMaxSpeed(){return maxSpeed;}
     public double getCurrentSpeed(){return currentSpeed;}
-
+    public String getName(){return name};
+    public Point getCurrentLocation(){return currentLocation;}
+    public double getAcceleration(){return acceleration;}
+    public String getQualification(){return qualification;}
+    public String getLeague(){return league;}
+    public String getGender(){return gender;}
+    public double getAge(){return age;}
 
     //set
     public void setCurrentSpeed(double currentSpeed){this.currentSpeed = currentSpeed;}
@@ -50,6 +71,7 @@ public class Skier {
     public void setQualification(String qualification){this.qualification = qualification;}
     public void setGender(String gender){this.gender = gender;}
     public void setLeague(String league){this.league = league;}
+    public void setCurrentLocation(Point currentLocation) {this.currentLocation = new Point(currentLocation.getX(),0); }
 
     /**
      * set the Current location  to start point.
@@ -77,10 +99,15 @@ public class Skier {
         // set new location
         currentLocation.setX(currentLocation.getX() + currentSpeed);
 
+        ////////////////////////////////////////////////////set y!!!!!!!!
+
+
         // check's if racer crossed finish line
         this.currentLocation.setX(this.currentLocation.getX() + this.currentSpeed);
         if (this.currentLocation.getX() >= finish.getX())
             return false;
         return true;
     }
+
+
 }
