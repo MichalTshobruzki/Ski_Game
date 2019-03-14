@@ -23,7 +23,7 @@ public class ExtremeSkiingArena {
     private Point start;
     private Point finish;
     private final double FRICTION = 0.4;
-    private int MAX_RACERS = 6;
+    private final int MAX_RACERS = 6;
     private String surface;
     private String condition;
     private String discipline;
@@ -44,6 +44,7 @@ public class ExtremeSkiingArena {
         this.discipline = discipline;
     }
 
+
     /**
      * default constructor
      */
@@ -55,13 +56,15 @@ public class ExtremeSkiingArena {
         this.discipline = "null";
     }
 
-    /**
-     * getFRICTION
-     * @return
-     */
+
+    //get
+    public Point getStart(){return start;}
+    public Point getFinish(){return finish;}
     public double getFRICTION(){
         return FRICTION;
     }
+
+
 
     /**
      * Adds skier to the arena
@@ -76,6 +79,7 @@ public class ExtremeSkiingArena {
         return false;
     }
 
+
     /**
      * Adds sunshineSkier to the arena
      * @param newsunshineSkier
@@ -88,6 +92,7 @@ public class ExtremeSkiingArena {
         }
         return false;
     }
+
 
     /**
      * Adds snowboarder to the arena
@@ -102,6 +107,7 @@ public class ExtremeSkiingArena {
         return false;
     }
 
+
     /**
      * Adds sportsmen who has finished the race to the finish lists.
      * The racer from type Skier.
@@ -114,6 +120,7 @@ public class ExtremeSkiingArena {
         }
         return finished.size();
     }
+
 
     /**
      * Adds sportsmen who has finished the race to the finish lists.
@@ -128,6 +135,7 @@ public class ExtremeSkiingArena {
         return finished.size();
     }
 
+
     /**
      * Adds sportsmen who has finished the race to the finish lists.
      * The racer from type Skier.
@@ -141,16 +149,40 @@ public class ExtremeSkiingArena {
         return finished.size();
     }
 
+
     /**
      * Initialized each racer to the start point in the arena
      */
     public void initRace(){
         for(Skier races: skiers)
-            races.initRace(start);
+            races.initRace(this.getStart());
         for(SunshineSkier races: sunshineSkiers)
-            races.initRace(start);
+            races.initRace(this.getStart());
         for(Snowboarder races: snowboarders)
-            races.initRace(start);
+            races.initRace(this.getStart());
     }
 
+    /**
+     * moves all the sportsmen and remove those who have finished
+     */
+    public void playTurn() {
+        for(Skier racer: skiers)
+            racer.move(getFinish(), FRICTION);
+
+        for(SunshineSkier racer: sunshineSkiers)
+            racer.move(getFinish(), FRICTION);
+
+        for(Snowboarder racer: snowboarders)
+            racer.move(getFinish(), FRICTION);
+
+        // check's who is finish the race
+        for(Object racer: finished) {
+            if (racer instanceof Skier)
+                skiers.remove((Skier) racer);
+            else if (racer instanceof SunshineSkier)
+                sunshineSkiers.remove((SunshineSkier) racer);
+            else
+                snowboarders.remove((Snowboarder) racer);
+        }
+    }
 }

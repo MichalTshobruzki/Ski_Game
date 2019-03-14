@@ -1,6 +1,8 @@
 /**
- * Michal Tshobruzki 206087041
+ *
+ * @author Michal Tshobruzki 206087041
  * Shir Bar 313253668
+ *
  */
 
 package utilities;
