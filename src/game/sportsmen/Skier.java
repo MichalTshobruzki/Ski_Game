@@ -78,8 +78,9 @@ public class Skier {
      * @param start
      */
     public void initRace(Point start){
-        this.currentLocation.setX(start.getX());
-        this.currentLocation.setY(0);
+        if (start != null) {
+            this.setCurrentLocation(start);
+        }
     }
 
     /**
