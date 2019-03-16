@@ -49,18 +49,18 @@ public class GameEngine {
      * @return
      */
     public boolean addRacer(Object newRacer){
-//        if (newRacer instanceof OldTimer)
-//            return getComp().add((OldTimer) newRacer);
+        if (newRacer instanceof OldTimer)
+            return getComp().add((OldTimer) newRacer);
         if (newRacer instanceof Skier)
             return getComp().add((Skier)newRacer);
-//        if (newRacer instanceof Snowbiker)
-//            return getComp().add((Snowbiker) newRacer);
-//        if (newRacer instanceof Snowboarder)
-//            return getComp().add((Snowboarder) newRacer);
-//        if (newRacer instanceof SnowBunny)
-//            return getComp().add((SnowBunny) newRacer);
-//        if (newRacer instanceof SunshineSkier)
-//            return getComp().add((SunshineSkier) newRacer);
+        if (newRacer instanceof Snowbiker)
+            return getComp().add((Snowbiker) newRacer);
+        if (newRacer instanceof Snowboarder)
+            return getComp().add((Snowboarder) newRacer);
+        if (newRacer instanceof SnowBunny)
+            return getComp().add((SnowBunny) newRacer);
+        if (newRacer instanceof SunshineSkier)
+            return getComp().add((SunshineSkier) newRacer);
         return false;
     }
 
@@ -71,7 +71,7 @@ public class GameEngine {
     public void startRace(){
         int i = 0;
         while(getComp().playTurn()){
-            System.out.println("step" + i);
+            System.out.println("step " + i);
             i++;
         }
         System.out.println("Race is over");

@@ -20,7 +20,7 @@ public class ExtremeSkiingArena {
     private String surface;
     private String condition;
     private String discipline;
-    //private Skier racer.;
+
 
     /**
      * ExtremeSkiingArena constructor
@@ -80,9 +80,7 @@ public class ExtremeSkiingArena {
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
     }
-    //public void setRacer(Skier racer) {
-   //     this.racer = racer;
-   // }
+
 
 
     //get
@@ -119,9 +117,25 @@ public class ExtremeSkiingArena {
     public String getDiscipline() {
         return discipline;
     }
-    //public Skier getRacer() {
-    //    return racer;
-    //}
+
+
+
+    @Override
+    public String toString() {
+        return "ExtremeSkiingArena{" +
+                "skiers=" + skiers +
+                ", sunshineSkiers=" + sunshineSkiers +
+                ", snowboarders=" + snowboarders +
+                ", finished=" + finished +
+                ", start=" + start +
+                ", finish=" + finish +
+                ", FRICTION=" + FRICTION +
+                ", MAX_RACERS=" + MAX_RACERS +
+                ", surface='" + surface + '\'' +
+                ", condition='" + condition + '\'' +
+                ", discipline='" + discipline + '\'' +
+                '}';
+    }
 
 
     /**
@@ -139,39 +153,37 @@ public class ExtremeSkiingArena {
 
 
     /**
-     * Adds sunshineSkier to the arena
-     *
-     * @param newsunshineSkier
+     * Adds sunshineSkiers to the arena
+     * @param newCompetitor
      * @return true if matching and added, else false.
      */
-//    public boolean add(SunshineSkier newsunshineSkier) {
-//        if (newsunshineSkier != null && (skiers.size() + sunshineSkiers.size() + snowboarders.size()) < MAX_RACERS) {
-//            sunshineSkiers.add(newsunshineSkier);
-//            return true;
-//        }
-//        return false;
-//    }
+    public boolean add(SunshineSkier newCompetitor) {
+        if (newCompetitor != null && (skiers.size() + sunshineSkiers.size() + snowboarders.size()) < MAX_RACERS) {
+            sunshineSkiers.add(newCompetitor);
+            return true;
+        }
+        return false;
+    }
 
 
     /**
-     * Adds snowboarder to the arena
-     *
-     * @param newsnowboarder
+     * Adds snowboarders to the arena
+     * @param newCompetitor
      * @return true if matching and added, else false.
      */
-//    public boolean add(Snowboarder newsnowboarder) {
-//        if (newsnowboarder != null && (skiers.size() + sunshineSkiers.size() + snowboarders.size()) < MAX_RACERS) {
-//            snowboarders.add(newsnowboarder);
-//            return true;
-//        }
-//        return false;
-//    }
+    public boolean add(Snowboarder newCompetitor) {
+        if (newCompetitor != null && (skiers.size() + sunshineSkiers.size() + snowboarders.size()) < MAX_RACERS) {
+            snowboarders.add(newCompetitor);
+            return true;
+        }
+        return false;
+    }
+
 
 
     /**
      * Adds sportsmen who has finished the race to the finish lists.
      * The racer from type Skier.
-     *
      * @param sportsmen
      * @return sportsmen's position in the list
      */
@@ -179,38 +191,40 @@ public class ExtremeSkiingArena {
         if (sportsmen != null) {
             finished.add(sportsmen);
         }
+        skiers.remove(sportsmen);
+        return finished.size();
+    }
+
+
+
+    /**
+     * Adds sportsmen who has finished the race to the finish lists.
+     * The racer from type SunshineSkier.
+     * @param sportsmen
+     * @return sportsmen's position in the list
+     */
+    public int crossFinishLine(SunshineSkier sportsmen) {
+        if (sportsmen != null) {
+            finished.add(sportsmen);
+        }
+        sunshineSkiers.remove(sportsmen);
         return finished.size();
     }
 
 
     /**
      * Adds sportsmen who has finished the race to the finish lists.
-     * The racer from type Skier.
-     *
+     * The racer from type Snowboarder.
      * @param sportsmen
      * @return sportsmen's position in the list
      */
-//    public int crossFinishLine(SunshineSkier sportsmen) {
-//        if (sportsmen != null) {
-//            finished.add(sportsmen);
-//        }
-//        return finished.size();
-//    }
-
-
-    /**
-     * Adds sportsmen who has finished the race to the finish lists.
-     * The racer from type Skier.
-     *
-     * @param sportsmen
-     * @return sportsmen's position in the list
-     */
-//    public int crossFinishLine(Snowboarder sportsmen) {
-//        if (sportsmen != null) {
-//            finished.add(sportsmen);
-//        }
-//        return finished.size();
-//    }
+    public int crossFinishLine(Snowboarder sportsmen) {
+        if (sportsmen != null) {
+            finished.add(sportsmen);
+        }
+        snowboarders.remove(sportsmen);
+        return finished.size();
+    }
 
 
     /**
@@ -219,10 +233,10 @@ public class ExtremeSkiingArena {
     public void initRace() {
         for (Skier races : skiers)
             races.initRace(this.getStart());
-//        for (SunshineSkier races : sunshineSkiers)
-//            races.initRace(this.getStart());
-//        for (Snowboarder races : snowboarders)
-//            races.initRace(this.getStart());
+        for (SunshineSkier races : sunshineSkiers)
+            races.initRace(this.getStart());
+        for (Snowboarder races : snowboarders)
+            races.initRace(this.getStart());
     }
 
 
@@ -236,43 +250,39 @@ public class ExtremeSkiingArena {
             for (int i = 0; i < skiers.size(); i++) {
                 skiers.get(i).move(getFinish(), getFRICTION());
                 if ((skiers.get(i).getCurrentLocation().getX() >= finish.getX()) && (skiers.get(i).getCurrentLocation().getY() >= finish.getY())) {
-                    System.out.println(skiers.get(i).getName() + "has crossed finish line");
+                    System.out.println(skiers.get(i).getName() + " has crossed finish line");
                     crossFinishLine(skiers.get(i));
-                    skiers.remove(skiers.get(i));
                 }
 
             }
-            return true;
         }
+
+        if (sunshineSkiers.isEmpty())
+            return false;
+        else {
+            for (int i = 0; i < sunshineSkiers.size(); i++) {
+                sunshineSkiers.get(i).move(getFinish(), getFRICTION());
+                if ((sunshineSkiers.get(i).getCurrentLocation().getX() >= finish.getX()) && (sunshineSkiers.get(i).getCurrentLocation().getY() >= finish.getY())) {
+                    System.out.println(sunshineSkiers.get(i).getName() + " has crossed finish line");
+                    crossFinishLine(sunshineSkiers.get(i));
+                }
+
+            }
+        }
+
+        if (snowboarders.isEmpty())
+            return false;
+        else {
+            for (int i = 0; i < snowboarders.size(); i++) {
+                snowboarders.get(i).move(getFinish(), getFRICTION());
+                if ((snowboarders.get(i).getCurrentLocation().getX() >= finish.getX()) && (snowboarders.get(i).getCurrentLocation().getY() >= finish.getY())) {
+                    System.out.println(snowboarders.get(i).getName() + " has crossed finish line");
+                    crossFinishLine(snowboarders.get(i));
+                }
+            }
+        }
+        return true;
     }
-//        if (sunshineSkiers.isEmpty())
-//            return false;
-//        else {
-//            for (int i = 0; i < sunshineSkiers.size(); i++) {
-//                sunshineSkiers.get(i).move(getFinish(), getFRICTION());
-//                if ((sunshineSkiers.get(i).getCurrentLocation().getX() >= finish.getX()) && (sunshineSkiers.get(i).getCurrentLocation().getY() >= finish.getY())) {
-//                    System.out.println(sunshineSkiers.get(i).getName() + "has crossed finish line");
-//                    crossFinishLine(sunshineSkiers.get(i));
-//                    sunshineSkiers.remove(sunshineSkiers.get(i));
-//                }
-//                return true;
-//            }
-//        }
-//
-//        if (snowboarders.isEmpty())
-//            return false;
-//        else {
-//            for (int i = 0; i < snowboarders.size(); i++) {
-//                snowboarders.get(i).move(getFinish(), getFRICTION());
-//                if ((snowboarders.get(i).getCurrentLocation().getX() >= finish.getX()) && (snowboarders.get(i).getCurrentLocation().getY() >= finish.getY())) {
-//                    System.out.println(snowboarders.get(i).getName() + "has crossed finish line");
-//                    crossFinishLine(snowboarders.get(i));
-//                    snowboarders.remove(snowboarders.get(i));
-//                }
-//            }
-//            return true;
-//        }
-    //}
 }
 
 

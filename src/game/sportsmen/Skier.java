@@ -91,24 +91,22 @@ public class Skier {
      * @param friction
      * @return false if passed the finish line, else true.
      */
-    public boolean move(Point finish, double friction){
-        // check's if can take a move
-        if (this.getCurrentSpeed() < this.getMaxSpeed()){
-            this.setCurrentSpeed(this.getCurrentSpeed() + this.acceleration * friction);
+    public boolean move(Point finish, double friction) {
+        //  check's if racer crossed finish line
+        if (this.currentLocation.getX() < finish.getX()) {
+            currentSpeed = currentSpeed + acceleration * friction;
+            if (currentSpeed > maxSpeed)
+                currentSpeed = maxSpeed;
         }
 
         // set new location
-        currentLocation.setX(currentLocation.getX() + currentSpeed);
-
-        ////////////////////////////////////////////////////set y!!!!!!!!
-
+        this.currentLocation.setX(this.currentLocation.getX() + this.currentSpeed);
 
         // check's if racer crossed finish line
-        this.currentLocation.setX(this.currentLocation.getX() + this.currentSpeed);
         if (this.currentLocation.getX() >= finish.getX())
             return false;
+
+        System.out.println(name + " my location " + getCurrentLocation() + " my speed is " + getCurrentSpeed());
         return true;
     }
-
-
 }
