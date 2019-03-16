@@ -54,7 +54,7 @@ public class Skier {
     //get
     public double getMaxSpeed(){return maxSpeed;}
     public double getCurrentSpeed(){return currentSpeed;}
-    public String getName(){return name};
+    public String getName(){return name;};
     public Point getCurrentLocation(){return currentLocation;}
     public double getAcceleration(){return acceleration;}
     public String getQualification(){return qualification;}

@@ -88,10 +88,10 @@ public class Competition {
     public void initRace(){
         if (this.getArenaType() == ArenaType.EXTRIM_SKIING_ARENA )
             ((ExtremeSkiingArena)currentArena).initRace();
-        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA )
-            ((AlpineSkiingArena)currentArena).initRace();
-        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA )
-            ((FreeSkiingArena)currentArena).initRace();
+//        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA )
+//            ((AlpineSkiingArena)currentArena).initRace();
+//        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA )
+//            ((FreeSkiingArena)currentArena).initRace();
     }
 
 
@@ -101,22 +101,29 @@ public class Competition {
      * @return true for set, else fslse
      */
     public boolean setArena(Object arena){
-        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA ) {
-            setArenaType(ArenaType.ALPINE_SKIING_ARENA);
-            setCurrentArena((AlpineSkiingArena)arena);
-            return true;
-        }
-        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA ) {
-            setArenaType(ArenaType.FREE_SKIING_ARENA);
-            setCurrentArena((FreeSkiingArena)arena);
-            return true;
-        }
-        if(this.getArenaType() == ArenaType.EXTRIM_SKIING_ARENA){
+//        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA ) {
+//            setArenaType(ArenaType.ALPINE_SKIING_ARENA);
+//            setCurrentArena((AlpineSkiingArena)arena);
+//            return true;
+//        }
+//        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA ) {
+//            setArenaType(ArenaType.FREE_SKIING_ARENA);
+//            setCurrentArena((FreeSkiingArena)arena);
+//            return true;
+//        }
+        if (arena instanceof ExtremeSkiingArena){
             setArenaType(ArenaType.EXTRIM_SKIING_ARENA);
-            setCurrentArena((ExtremeSkiingArena)arena);
+            setCurrentArena(arena);
             return true;
         }
         return false;
+
+//        if(arenaType == ArenaType.EXTRIM_SKIING_ARENA){
+//            setArenaType(ArenaType.EXTRIM_SKIING_ARENA);
+//            setCurrentArena(arena);
+//            return true;
+//        }
+//        return false;
     }
 
 
@@ -127,21 +134,21 @@ public class Competition {
      * @param sportsman
      * @return false for not proper arena, else- true
      */
-    public boolean validCompetitor(OldTimer sportsman){
-        if (this.arenaType != ArenaType.FREE_SKIING_ARENA){
-            System.out.println("not proper arena");
-            return false;
-        }
-        else{
-            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
-                    && qualification == sportsman.getQualificatio())
-                return true;
-            else{
-                System.out.println("not valid competitor");
-                return false;
-            }
-        }
-    }
+//    public boolean validCompetitor(OldTimer sportsman){
+//        if (this.arenaType != ArenaType.FREE_SKIING_ARENA){
+//            System.out.println("not proper arena");
+//            return false;
+//        }
+//        else{
+//            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
+//                    && qualification == sportsman.getQualificatio())
+//                return true;
+//            else{
+//                System.out.println("not valid competitor");
+//                return false;
+//            }
+//        }
+//    }
 
 
     /**
@@ -174,21 +181,21 @@ public class Competition {
      * @param sportsman
      * @return false for not proper arena, else- true
      */
-    public boolean validCompetitor(Snowbiker sportsman){
-        if (this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
-            System.out.println("not proper arena");
-            return false;
-        }
-        else{
-            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
-                    && qualification == sportsman.getQualification())
-                return true;
-            else{
-                System.out.println("not valid competitor");
-                return false;
-            }
-        }
-    }
+//    public boolean validCompetitor(Snowbiker sportsman){
+//        if (this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
+//            System.out.println("not proper arena");
+//            return false;
+//        }
+//        else{
+//            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
+//                    && qualification == sportsman.getQualification())
+//                return true;
+//            else{
+//                System.out.println("not valid competitor");
+//                return false;
+//            }
+//        }
+//    }
 
 
 
@@ -198,21 +205,21 @@ public class Competition {
      * @param sportsman
      * @return false for not proper arena, else- true
      */
-    public boolean validCompetitor(Snowboarder sportsman){
-        if (this.arenaType != ArenaType.EXTRIM_SKIING_ARENA){
-            System.out.println("not proper arena");
-            return false;
-        }
-        else{
-            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
-                    && qualification == sportsman.getQualification())
-                return true;
-            else{
-                System.out.println("not valid competitor");
-                return false;
-            }
-        }
-    }
+//    public boolean validCompetitor(Snowboarder sportsman){
+//        if (this.arenaType != ArenaType.EXTRIM_SKIING_ARENA){
+//            System.out.println("not proper arena");
+//            return false;
+//        }
+//        else{
+//            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
+//                    && qualification == sportsman.getQualification())
+//                return true;
+//            else{
+//                System.out.println("not valid competitor");
+//                return false;
+//            }
+//        }
+//    }
 
 
     /**
@@ -221,21 +228,21 @@ public class Competition {
      * @param sportsman
      * @return false for not proper arena, else- true
      */
-    public boolean validCompetitor(SnowBunny sportsman){
-        if (this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
-            System.out.println("not proper arena");
-            return false;
-        }
-        else{
-            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
-                    && qualification == sportsman.getQualification())
-                return true;
-            else{
-                System.out.println("not valid competitor");
-                return false;
-            }
-        }
-    }
+//    public boolean validCompetitor(SnowBunny sportsman){
+//        if (this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
+//            System.out.println("not proper arena");
+//            return false;
+//        }
+//        else{
+//            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
+//                    && qualification == sportsman.getQualification())
+//                return true;
+//            else{
+//                System.out.println("not valid competitor");
+//                return false;
+//            }
+//        }
+//    }
 
 
 
@@ -245,21 +252,21 @@ public class Competition {
      * @param sportsman
      * @return false for not proper arena, else- true
      */
-    public boolean validCompetitor(SunshineSkier sportsman){
-        if (this.arenaType != ArenaType.EXTRIM_SKIING_ARENA && this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
-            System.out.println("not proper arena");
-            return false;
-        }
-        else{
-            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
-                    && qualification == sportsman.getQualification())
-                return true;
-            else{
-                System.out.println("not valid competitor");
-                return false;
-            }
-        }
-    }
+//    public boolean validCompetitor(SunshineSkier sportsman){
+//        if (this.arenaType != ArenaType.EXTRIM_SKIING_ARENA && this.arenaType != ArenaType.ALPINE_SKIING_ARENA){
+//            System.out.println("not proper arena");
+//            return false;
+//        }
+//        else{
+//            if(minAge <= sportsman.getAge() && gender == sportsman.getGender() && league == sportsman.getLeague()
+//                    && qualification == sportsman.getQualification())
+//                return true;
+//            else{
+//                System.out.println("not valid competitor");
+//                return false;
+//            }
+//        }
+//    }
 
 
     /**
@@ -267,11 +274,11 @@ public class Competition {
      * @param sportsman
      * @return true for success , else false
      */
-    public boolean add(OldTimer sportsman){
-        if (validCompetitor(sportsman))
-            return ((FreeSkiingArena)currentArena).add(sportsman);
-        return false;
-    }
+//    public boolean add(OldTimer sportsman){
+//        if (validCompetitor(sportsman))
+//            return ((FreeSkiingArena)currentArena).add(sportsman);
+//        return false;
+//    }
 
 
     /**
@@ -286,49 +293,60 @@ public class Competition {
     }
 
 
-    /**
-     * call add method in the currentArena Object if the sportsman is valid competitor.
-     * @param sportsman
-     * @return true for success , else false
-     */
-    public boolean add(Snowbiker sportsman){
-        if (validCompetitor(sportsman))
-            return ((AlpineSkiingArena)currentArena).add(sportsman);
-        return false;
-    }
-
-
-    /**
-     * call add method in the currentArena Object if the sportsman is valid competitor.
-     * @param sportsman
-     * @return true for success , else false
-     */
-    public boolean add(Snowboarder sportsman){
-        if (validCompetitor(sportsman))
-            return ((ExtremeSkiingArena)currentArena).add(sportsman);
-        return false;
-    }
-
-
-
-    /**
-     * call add method in the currentArena Object if the sportsman is valid competitor.
-     * @param sportsman
-     * @return true for success , else false
-     */
-    public boolean add(SunshineSkier sportsman){
-        if (validCompetitor(sportsman)) {
-            if (this.arenaType == ArenaType.EXTRIM_SKIING_ARENA){
-                return ((ExtremeSkiingArena)currentArena).add(sportsman);
-            }
-            else if(this.arenaType == ArenaType.ALPINE_SKIING_ARENA)
-                return ((AlpineSkiingArena)currentArena).add(sportsman);
-            else
-                return false;
-        }
-        return false;
-    }
-
+//    /**
+//     * call add method in the currentArena Object if the sportsman is valid competitor.
+//     * @param sportsman
+//     * @return true for success , else false
+//     */
+//    public boolean add(Snowbiker sportsman){
+//        if (validCompetitor(sportsman))
+//            return ((AlpineSkiingArena)currentArena).add(sportsman);
+//        return false;
+//    }
+//
+//
+//    /**
+//     * call add method in the currentArena Object if the sportsman is valid competitor.
+//     * @param sportsman
+//     * @return true for success , else false
+//     */
+//    public boolean add(Snowboarder sportsman){
+//        if (validCompetitor(sportsman))
+//            return ((ExtremeSkiingArena)currentArena).add(sportsman);
+//        return false;
+//    }
+//
+//
+//    /**
+//     * call add method in the currentArena Object if the sportsman is valid competitor.
+//     * @param sportsman
+//     * @return true for success , else false
+//     */
+//    public boolean add(SnowBunny sportsman){
+//        if (validCompetitor(sportsman))
+//            return ((AlpineSkiingArena)currentArena).add(sportsman);
+//        return false;
+//    }
+//
+//
+//    /**
+//     * call add method in the currentArena Object if the sportsman is valid competitor.
+//     * @param sportsman
+//     * @return true for success , else false
+//     */
+//    public boolean add(SunshineSkier sportsman){
+//        if (validCompetitor(sportsman)) {
+//            if (this.arenaType == ArenaType.EXTRIM_SKIING_ARENA){
+//                return ((ExtremeSkiingArena)currentArena).add(sportsman);
+//            }
+//            else if(this.arenaType == ArenaType.ALPINE_SKIING_ARENA)
+//                return ((AlpineSkiingArena)currentArena).add(sportsman);
+//            else
+//                return false;
+//        }
+//        return false;
+//    }
+//
 
     /**
      * call the currentArena object playTurn method, returns currentArena.playTurn.
@@ -339,14 +357,14 @@ public class Competition {
             ((ExtremeSkiingArena) currentArena).playTurn();
             return true;
         }
-        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA ) {
-            ((AlpineSkiingArena) currentArena).playTurn();
-            return true;
-        }
-        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA ) {
-            ((FreeSkiingArena) currentArena).playTurn();
-            return true;
-        }
+//        if (this.getArenaType() == ArenaType.ALPINE_SKIING_ARENA ) {
+//            ((AlpineSkiingArena) currentArena).playTurn();
+//            return true;
+//        }
+//        if (this.getArenaType() == ArenaType.FREE_SKIING_ARENA ) {
+//            ((FreeSkiingArena) currentArena).playTurn();
+//            return true;
+//        }
         else
             return false;
     }
